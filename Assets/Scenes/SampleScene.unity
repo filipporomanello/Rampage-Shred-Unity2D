@@ -569,6 +569,7 @@ GameObject:
   - component: {fileID: 914619016}
   - component: {fileID: 914619013}
   - component: {fileID: 914619017}
+  - component: {fileID: 914619018}
   m_Layer: 0
   m_Name: Alan
   m_TagString: Untagged
@@ -591,7 +592,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 0.05
-  m_GravityScale: 0.8
+  m_GravityScale: 0.6
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -656,6 +657,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0.109242305, y: -1.0694897}
   m_Size: {x: 2.5695515, y: 0.4537961}
   m_Direction: 1
+--- !u!114 &914619018
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 914619012}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9add0e7dc2f53cc41ab6a0448e40d5f7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerController
 --- !u!1 &1028576899
 GameObject:
   m_ObjectHideFlags: 0
