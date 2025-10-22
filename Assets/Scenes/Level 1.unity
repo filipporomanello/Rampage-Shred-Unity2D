@@ -593,7 +593,7 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDamping: 0
-  m_AngularDamping: 1
+  m_AngularDamping: 2
   m_GravityScale: 0.6
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -671,7 +671,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9add0e7dc2f53cc41ab6a0448e40d5f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  torqueAmount: 1
+  torqueAmount: 2
 --- !u!114 &914619019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -684,6 +684,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ff64723281846d4caac49fdd4c9c852, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CrashDetector
+  delayBeforeReload: 1
 --- !u!58 &914619020
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1841,6 +1842,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 971d8d60e82c8e54e96a8f1b14d86316, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FinishLine
+  delayBeforeReload: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
