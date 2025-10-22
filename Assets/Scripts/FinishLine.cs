@@ -1,6 +1,5 @@
-using Unity.VisualScripting;
 using UnityEngine;
-
+using UnityEngine.SceneManagement;
 public class FinishLine : MonoBehaviour
 {
     void OnTriggerEnter2D(Collider2D collision)
@@ -9,7 +8,7 @@ public class FinishLine : MonoBehaviour
 
         if (collision.gameObject.layer == layerIndex)
         {
-            Debug.Log("The player has reached the finish line!");
+            SceneManager.LoadScene(0);
         }
     }
 }
