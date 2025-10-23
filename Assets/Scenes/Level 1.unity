@@ -12603,7 +12603,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDamping: 0
   m_AngularDamping: 10
-  m_GravityScale: 0.6
+  m_GravityScale: 1.2
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -12681,7 +12681,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9add0e7dc2f53cc41ab6a0448e40d5f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  torqueAmount: 0.8
+  torqueAmount: 1
+  basespeed: 10
+  boostSpeed: 20
 --- !u!114 &914619019
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12731,7 +12733,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 1.25, y: 0.75}
-  m_Radius: 0.7
+  m_Radius: 0.6
 --- !u!1 &1028576899
 GameObject:
   m_ObjectHideFlags: 0
@@ -13714,7 +13716,7 @@ SurfaceEffector2D:
   m_ForceScale: 1
   m_UseContactForce: 0
   m_UseFriction: 1
-  m_UseBounce: 1
+  m_UseBounce: 0
 --- !u!1 &1063050149
 GameObject:
   m_ObjectHideFlags: 0
