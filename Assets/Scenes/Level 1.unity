@@ -6659,7 +6659,7 @@ GameObject:
   m_Component:
   - component: {fileID: 644609567}
   m_Layer: 0
-  m_Name: Background and Tune
+  m_Name: Environment
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12611,7 +12611,7 @@ Rigidbody2D:
   m_ExcludeLayers:
     serializedVersion: 2
     m_Bits: 0
-  m_Interpolate: 0
+  m_Interpolate: 1
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
@@ -12682,6 +12682,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
   torqueAmount: 0.8
+  forwardSpeed: 5
 --- !u!114 &914619019
 MonoBehaviour:
   m_ObjectHideFlags: 0
