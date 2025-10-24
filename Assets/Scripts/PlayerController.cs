@@ -10,6 +10,9 @@ public class PlayerController : MonoBehaviour
     Rigidbody2D myRigibody2D;
     SurfaceEffector2D surfaceEffector2D;
     bool canControlPlayer = true;
+    float previusRotation;
+    float totalRotations;
+    int flipCount;
     void Start()
     {
         moveAction = InputSystem.actions.FindAction("Move");
@@ -23,6 +26,7 @@ public class PlayerController : MonoBehaviour
         {
             RotatePlayer();
             BoostPlayer();
+            CalculteFlips();
         }
     }
     void RotatePlayer()
@@ -48,6 +52,20 @@ public class PlayerController : MonoBehaviour
         {
             surfaceEffector2D.speed = basespeed;
         }
+    }
+    void CalculteFlips()
+    {
+        float currentRotation = transform.rotation.eulerAngles.z;
+
+        totalRotations += Mathf.DeltaAngle(previusRotation, currentRotation);
+        if (totalRotations > 340 || totalRotations < -340)
+        {
+            flipCount += 1;
+            totalRotations = 0;
+            Debug.Log("Flips: " + flipCount);
+        }
+
+        previusRotation = currentRotation;
     }
     public void DisableControls()
     {
