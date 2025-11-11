@@ -1,16 +1,17 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SocialPlatforms.Impl;
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] float torqueAmount = 1f;
     [SerializeField] float basespeed = 10f;
     [SerializeField] float boostSpeed = 20f;
     [SerializeField] ParticleSystem powerupParticles;
+    [SerializeField] ScoreManager scoreManager;
     
     InputAction moveAction;
     Rigidbody2D myRigibody2D;
     SurfaceEffector2D surfaceEffector2D;
-    ScoreManager scoreManager;
     bool canControlPlayer = true;
     float previusRotation;
     float totalRotations;
@@ -20,7 +21,6 @@ public class PlayerController : MonoBehaviour
         moveAction = InputSystem.actions.FindAction("Move");
         myRigibody2D = GetComponent<Rigidbody2D>();
         surfaceEffector2D = FindFirstObjectByType<SurfaceEffector2D>();
-        scoreManager = FindFirstObjectByType<ScoreManager>();
     }
 
     void Update()
