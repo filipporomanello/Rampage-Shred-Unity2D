@@ -1,2 +1,9 @@
-# Auto detect text files and perform LF normalization
-* text=auto
+# Tell GitHub Linguist to treat these files as generated (ignored for language stats)
+*.shader linguist-generated=true
+*.cginc linguist-generated=true
+*.mat linguist-generated=true
+*.prefab linguist-generated=true
+*.unity linguist-generated=true
+*.anim linguist-generated=true
+*.meta linguist-generated=true
+
