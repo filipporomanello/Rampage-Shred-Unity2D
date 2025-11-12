@@ -17908,9 +17908,9 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 10
+  m_Mass: 1.2
+  m_LinearDamping: 0.1
+  m_AngularDamping: 1
   m_GravityScale: 1.2
   m_Material: {fileID: 0}
   m_IncludeLayers:
@@ -17992,9 +17992,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9add0e7dc2f53cc41ab6a0448e40d5f7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
-  torqueAmount: 4
+  torqueAmount: 170
   basespeed: 10
-  boostSpeed: 15
+  boostSpeed: 18
   powerupParticles: {fileID: 133829073}
   scoreManager: {fileID: 2091142680}
 --- !u!114 &914619019

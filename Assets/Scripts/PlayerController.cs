@@ -1,14 +1,15 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.SocialPlatforms.Impl;
+
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] float torqueAmount = 1f;
+    [SerializeField] float torqueAmount = 170f;
     [SerializeField] float basespeed = 10f;
-    [SerializeField] float boostSpeed = 20f;
+    [SerializeField] float boostSpeed = 18f;
     [SerializeField] ParticleSystem powerupParticles;
     [SerializeField] ScoreManager scoreManager;
-    
+
     InputAction moveAction;
     Rigidbody2D myRigibody2D;
     SurfaceEffector2D surfaceEffector2D;
@@ -16,6 +17,12 @@ public class PlayerController : MonoBehaviour
     float previusRotation;
     float totalRotations;
     int activePowerupCount;
+
+    void Awake()
+    {
+        Application.targetFrameRate = 60;
+    }
+
     void Start()
     {
         moveAction = InputSystem.actions.FindAction("Move");
@@ -27,56 +34,63 @@ public class PlayerController : MonoBehaviour
     {
         if (canControlPlayer)
         {
-            RotatePlayer();
-            BoostPlayer();
-            CalculteFlips();
+            BoostPlayer();       
+            CalculteFlips();     
         }
     }
-    void RotatePlayer()
+
+    void FixedUpdate()
     {
-        Vector2 moveVector;
-        moveVector = moveAction.ReadValue<Vector2>();
-        if (moveVector.x < 0)
+        if (canControlPlayer)
         {
-            myRigibody2D.AddTorque(torqueAmount);
-        }
-        else if (moveVector.x > 0)
-        {
-            myRigibody2D.AddTorque(-torqueAmount);
+            RotatePlayer();      
         }
     }
+
+    void RotatePlayer()
+{
+    Vector2 moveVector = moveAction.ReadValue<Vector2>();
+
+    if (moveVector.x < -0.1f)  
+    {
+        myRigibody2D.AddTorque(torqueAmount * Time.fixedDeltaTime, ForceMode2D.Force);
+    }
+    else if (moveVector.x > 0.1f) 
+    {
+        myRigibody2D.AddTorque(-torqueAmount * Time.fixedDeltaTime, ForceMode2D.Force);
+    }
+}
+
+
     void BoostPlayer()
     {
-        if (moveAction.ReadValue<Vector2>().y > 0)
-        {
-            surfaceEffector2D.speed = boostSpeed;
-        }
-        else
-        {
-            surfaceEffector2D.speed = basespeed;
-        }
+        Vector2 moveVector = moveAction.ReadValue<Vector2>();
+        surfaceEffector2D.speed = (moveVector.y > 0) ? boostSpeed : basespeed;
     }
+
     void CalculteFlips()
     {
         float currentRotation = transform.rotation.eulerAngles.z;
-
         totalRotations += Mathf.DeltaAngle(previusRotation, currentRotation);
-        if (totalRotations > 340 || totalRotations < -340)
+
+        if (totalRotations > 340f || totalRotations < -340f)
         {
-            totalRotations = 0;
+            totalRotations = 0f;
             scoreManager.AddScore(100);
         }
 
         previusRotation = currentRotation;
     }
+
     public void DisableControls()
     {
         canControlPlayer = false;
     }
+
     public void ActivatePowerUp(PowerUpSO powerUp)
     {
         powerupParticles.Play();
-        activePowerupCount += 1;
+        activePowerupCount++;
 
         if (powerUp.GetPowerUpType() == "speed")
         {
@@ -88,13 +102,13 @@ public class PlayerController : MonoBehaviour
             torqueAmount += powerUp.GetValueChange();
         }
     }
+
     public void DeactivatePowerUp(PowerUpSO powerUp)
     {
-        activePowerupCount -= 1;
-        if (activePowerupCount == 0)
-        {
+        activePowerupCount--;
+        if (activePowerupCount <= 0)
             powerupParticles.Stop();
-        }
+
         if (powerUp.GetPowerUpType() == "speed")
         {
             basespeed -= powerUp.GetValueChange();
