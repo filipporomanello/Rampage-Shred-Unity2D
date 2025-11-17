@@ -1,4 +1,3 @@
-using NUnit.Framework.Constraints;
 using UnityEngine;
 
 public class CharSelectManager : MonoBehaviour
@@ -11,17 +10,20 @@ public class CharSelectManager : MonoBehaviour
         Time.timeScale = 0;
         scoreCanvas.SetActive(false);
     }
+
     void BeginGame()
     {
         Time.timeScale = 1f;
         scoreCanvas.SetActive(true);
         gameObject.SetActive(false);
     }
+
     public void ChooseDino()
     {
         dinoSprite.SetActive(true);
         BeginGame();
     }
+
     public void ChooseFrog()
     {
         frogSprite.SetActive(true);

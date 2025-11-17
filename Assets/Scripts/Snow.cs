@@ -3,6 +3,7 @@ using UnityEngine;
 public class Snow : MonoBehaviour
 {
     [SerializeField] ParticleSystem snowParticles;
+
     void OnCollisionEnter2D(Collision2D collision)
     {
         int layerIndex = LayerMask.NameToLayer("Floor");
@@ -12,6 +13,7 @@ public class Snow : MonoBehaviour
             snowParticles.Play();
         }
     }
+
     void OnCollisionExit2D(Collision2D collision)
     {
         int layerIndex = LayerMask.NameToLayer("Floor");

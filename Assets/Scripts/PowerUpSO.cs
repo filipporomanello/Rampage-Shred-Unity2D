@@ -11,10 +11,12 @@ public class PowerUpSO : ScriptableObject
     {
         return powerUpType;
     }
+
     public float GetValueChange()
     {
         return valueChange;
     }
+
     public float GetTime()
     {
         return time;
