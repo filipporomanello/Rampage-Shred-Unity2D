@@ -1,5 +1,5 @@
 # Rampage-Shred-Unity2D
-Second 2D game made with Unity as part of the "Complete C# Unity 2D Game Developer" course (Nov 2025).  
+Second 2D game made with Unity.  
 This project focuses on physics-based movement, scoring mechanics, and game state management.
 
 ---
