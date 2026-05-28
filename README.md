@@ -3,7 +3,7 @@ Second 2D game made with Unity.
 This project focuses on physics-based movement, scoring mechanics, and game state management.
 
 ---
-
+https://github.com/alterpendragon/rampage-shred/blob/main/README.md
 ## 🎯 Features
 - Two playable characters  
 - Backflip and frontflip system for scoring  
@@ -20,5 +20,4 @@ This project focuses on physics-based movement, scoring mechanics, and game stat
 
 ## 👤 Author
 **Filippo Romanello**  
-[GitHub Profile](https://github.com/filipporomanello)
 [Itch.io Profile](https://filipporomanello.itch.io/)
