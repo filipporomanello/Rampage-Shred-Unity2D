@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+// Controls player movement, boosts, flips scoring, and power-up effects.
 public class PlayerController : MonoBehaviour
 {
     [SerializeField] float torqueAmount = 170f;
@@ -22,11 +23,13 @@ public class PlayerController : MonoBehaviour
 
     void Awake()
     {
+        // Keep gameplay feel consistent across machines.
         Application.targetFrameRate = 60;
     }
 
     void Start()
     {
+        // Resolve input and physics dependencies once.
         moveAction = InputSystem.actions.FindAction("Move");
         myRigidbody2D = GetComponent<Rigidbody2D>();
         surfaceEffector2D = FindFirstObjectByType<SurfaceEffector2D>();
@@ -36,6 +39,7 @@ public class PlayerController : MonoBehaviour
     {
         if (canControlPlayer)
         {
+            // Apply speed changes and check for flip scoring.
             BoostPlayer();
             CalculateFlips();
         }
@@ -45,6 +49,7 @@ public class PlayerController : MonoBehaviour
     {
         if (canControlPlayer)
         {
+            // Apply rotation in the physics step.
             RotatePlayer();
         }
     }
@@ -53,6 +58,7 @@ public class PlayerController : MonoBehaviour
     {
         Vector2 moveVector = moveAction.ReadValue<Vector2>();
 
+        // Apply torque based on horizontal input.
         if (moveVector.x < -0.1f)
         {
             myRigidbody2D.AddTorque(torqueAmount * Time.fixedDeltaTime, ForceMode2D.Force);
@@ -66,12 +72,14 @@ public class PlayerController : MonoBehaviour
 
     void BoostPlayer()
     {
+        // Increase speed while the player holds the boost direction.
         Vector2 moveVector = moveAction.ReadValue<Vector2>();
         surfaceEffector2D.speed = (moveVector.y > 0) ? boostSpeed : baseSpeed;
     }
 
     void CalculateFlips()
     {
+        // Accumulate rotation and award points for full flips.
         float currentRotation = transform.rotation.eulerAngles.z;
         totalRotations += Mathf.DeltaAngle(previousRotation, currentRotation);
 
@@ -86,11 +94,13 @@ public class PlayerController : MonoBehaviour
 
     public void DisableControls()
     {
+        // Used by crash detection to stop player input.
         canControlPlayer = false;
     }
 
     public void ActivatePowerUp(PowerUpSO powerUp)
     {
+        // Support stacking power-ups before turning off the effect.
         powerupParticles.Play();
         activePowerupCount++;
 
@@ -111,6 +121,7 @@ public class PlayerController : MonoBehaviour
         if (activePowerupCount <= 0)
             powerupParticles.Stop();
 
+        // Reverse the same adjustment applied when activating.
         if (powerUp.GetPowerUpType() == "speed")
         {
             baseSpeed -= powerUp.GetValueChange();

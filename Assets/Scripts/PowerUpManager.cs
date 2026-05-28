@@ -1,5 +1,6 @@
 using UnityEngine;
 
+// Handles pickup, activation, and timed deactivation of a power-up.
 public class PowerUpManager : MonoBehaviour
 {
     [SerializeField] PowerUpSO powerUp;
@@ -10,6 +11,7 @@ public class PowerUpManager : MonoBehaviour
 
     void Start()
     {
+        // Wire up references and initialize the timer from the configured asset.
         player = FindFirstObjectByType<PlayerController>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         timeLeft = powerUp.GetTime();
@@ -22,6 +24,7 @@ public class PowerUpManager : MonoBehaviour
 
     void CountdownTimer()
     {
+        // Count down only after the pickup has been collected (sprite hidden).
         if (spriteRenderer.enabled == false)
         {
             if (timeLeft > 0)
@@ -41,6 +44,7 @@ public class PowerUpManager : MonoBehaviour
 
         if (collision.gameObject.layer == layerIndex && spriteRenderer.enabled == true)
         {
+            // Hide the pickup and apply the configured effect.
             spriteRenderer.enabled = false;
             player.ActivatePowerUp(powerUp);
         }
